@@ -1,4 +1,4 @@
-/* Базові стилі ПК (залишаються без змін) */
+/* Базові стилі ПК */
 .navigation {
     position: fixed;
     top: 0;
@@ -35,6 +35,7 @@ nav a {
     position: relative;
 }
 
+/* Синя лінія (тільки ПК) */
 nav a::after {
     content: '';
     position: absolute;
@@ -45,7 +46,7 @@ nav a::after {
     height: 3px;
     background-color: #0066ff;
     border-radius: 2px;
-    transition: transform 0.3s;
+    transition: 0.3s;
 }
 
 nav a:hover { color: #0066ff; }
@@ -67,17 +68,18 @@ nav a:hover::after { transform: translateX(-50%) scaleX(1); }
     transition: 0.3s;
 }
 
-/* --- МОБІЛЬНА ВЕРСІЯ (Випадаюче меню під кнопкою) --- */
+/* --- МОБІЛЬНА ВЕРСІЯ (Виправлена підкладка) --- */
 @media (max-width: 768px) {
     .navigation {
-        background-color: transparent; /* Прибираємо фон і лінію зверху */
+        background-color: transparent;
         backdrop-filter: none;
-        justify-content: flex-end; /* Бургер справа */
-        padding-top: 10px;
+        justify-content: flex-end;
+        height: 50px; /* Трохи зменшив висоту панелі для мобілок */
     }
 
     .burger-menu {
         display: flex;
+        margin-right: 10px;
     }
 
     /* Хрестик */
@@ -86,42 +88,53 @@ nav a:hover::after { transform: translateX(-50%) scaleX(1); }
     .burger-menu.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
     nav {
-        display: none; /* Ховаємо по замовчуванню */
+        display: none;
         position: absolute;
-        top: 55px; /* Прямо під бургер-кнопкою */
+        top: 55px; /* Відступ чітко під бургер */
         right: 20px;
-        width: auto; /* Ширина по контенту */
-        min-width: 160px;
-        height: auto; /* Висота по кількості пунктів */
-        background-color: white;
+        
+        /* Налаштування фону та розміру */
+        background-color: #ffffff; 
+        width: auto;
+        min-width: 140px; /* Мінімальна ширина, щоб не було занадто вузьким */
+        max-width: 200px;
+        
+        /* Вирівнювання */
         flex-direction: column;
         align-items: flex-start;
-        padding: 15px;
-        gap: 15px;
-        border-radius: 12px;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        padding: 12px 15px; /* Однакові відступи з усіх боків */
+        gap: 10px;
+        
+        /* Стиль підкладки */
+        border-radius: 10px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.15); /* М'яка тінь для об'єму */
         z-index: 1050;
+        border: 1px solid #f0f0f0; /* Ледь помітна рамка для чіткості меж */
     }
 
-    /* Показуємо при активному класі */
     nav.active {
-        display: flex;
-    }
-
-    /* Вимикаємо синю лінію-підкреслення */
-    nav a::after {
-        display: none;
+        display: flex; /* Показуємо весь блок з фоном */
     }
 
     nav a {
-        height: auto;
-        font-size: 16px;
+        display: block;
         width: 100%;
-        padding: 5px 10px;
+        height: auto;
+        padding: 5px 0; /* Відступ між рядками тексту всередині */
+        font-size: 16px;
+        color: #444;
+        text-decoration: none;
+        transition: color 0.2s ease;
     }
 
-    nav a:hover {
-        background-color: #f0f7ff; /* Легкий фон при натисканні */
-        border-radius: 6px;
+    /* Прибираємо лінію-підкреслення ПК версії */
+    nav a::after {
+        display: none !important;
+    }
+
+    /* Ефект при натисканні - тільки колір тексту */
+    nav a:active, nav a:hover {
+        color: #0066ff;
+        background: none;
     }
 }
