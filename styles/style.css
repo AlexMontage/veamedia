@@ -1,0 +1,28 @@
+html {
+    scroll-behavior: smooth;
+}
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+section {
+    padding: 0 0;
+    max-width: 1900px;
+    max-height: 1900px;
+    margin: 100px auto;
+}
+.title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    text-align: center; /* Центрує заголовок */
+    margin-bottom: 0px;
+    color: #333;
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 28px; /* Трішки менший заголовок для телефонів */
+    }
+}

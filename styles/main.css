@@ -1,0 +1,14 @@
+#main {
+    max-width: 1900;
+    max-height: auto;
+}
+.main {
+    margin: 130px;
+    max-width: 1000px;
+}
+.main-box {
+    margin: 0px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
