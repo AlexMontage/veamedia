@@ -30,4 +30,19 @@ document.addEventListener('DOMContentLoaded', () => {
             burgerBtn.classList.remove('open');
         }
     });
+
+});
+
+window.addEventListener('load', function() {
+    const preloader = document.getElementById('preloader');
+    
+    // Додаємо невелику затримку (наприклад, 300мс), щоб перехід був плавнішим
+    setTimeout(() => {
+        preloader.classList.add('preloader-hidden');
+        
+        // Повністю видаляємо його з коду через 0.5с (після завершення анімації)
+        setTimeout(() => {
+            preloader.style.display = 'none';
+        }, 500);
+    }, 300);
 });
