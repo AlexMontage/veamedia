@@ -1,9 +1,10 @@
+/* Базові стилі ПК (залишаються без змін) */
 .navigation {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 60px; /* Трохи збільшив висоту для простору */
+    height: 60px;
     background-color: #ffffffd7;
     backdrop-filter: blur(10px);
     display: flex;
@@ -21,47 +22,37 @@ nav {
     height: 100%;
 }
 
-/* Самі посилання */
 nav a {
     text-decoration: none;
     color: #444;
     font-family: 'Montserrat', sans-serif;
     font-size: 15px;
-    font-weight: 450; /* Жирність тепер не змінюється */
+    font-weight: 450;
     transition: 0.3s;
     display: flex;
     align-items: center;
-    height: 100%; /* Щоб посилання займало всю висоту */
-    position: relative; /* Важливо для позиціонування прямокутника */
+    height: 100%;
+    position: relative;
 }
 
-/* Створення маленького прямокутника знизу */
-
-/* Створення маленького прямокутника знизу */
 nav a::after {
     content: '';
     position: absolute;
-    bottom: 10px; /* Відступ від низу панелі */
+    bottom: 10px;
     left: 50%;
-    transform: translateX(-50%) scaleX(0); /* Центруємо і ховаємо */
-    width: 35px; /* Ширина прямокутника */
-    height: 3px; /* Висота прямокутника */
+    transform: translateX(-50%) scaleX(0);
+    width: 35px;
+    height: 3px;
     background-color: #0066ff;
     border-radius: 2px;
-    transition: transform 0.3s cubic-bezier(0.3, 0, 0.2, 1);
+    transition: transform 0.3s;
 }
 
-/* Ефект при наведенні */
-nav a:hover {
-    color: #0066ff
-}
-
-nav a:hover::after {
-    transform: translateX(-50%) scaleX(1); /* Показуємо при наведенні */
-}
+nav a:hover { color: #0066ff; }
+nav a:hover::after { transform: translateX(-50%) scaleX(1); }
 
 .burger-menu {
-    display: none; /* Це ховає бургер на комп'ютерах */
+    display: none;
     flex-direction: column;
     gap: 5px;
     cursor: pointer;
@@ -76,40 +67,61 @@ nav a:hover::after {
     transition: 0.3s;
 }
 
-/* --- АДАПТИВНІСТЬ ТІЛЬКИ ДЛЯ ТЕЛЕФОНІВ (max-width: 768px) --- */
+/* --- МОБІЛЬНА ВЕРСІЯ (Випадаюче меню під кнопкою) --- */
 @media (max-width: 768px) {
-    .burger-menu {
-        display: flex; /* Показуємо бургер тільки на мобільних */
+    .navigation {
+        background-color: transparent; /* Прибираємо фон і лінію зверху */
+        backdrop-filter: none;
+        justify-content: flex-end; /* Бургер справа */
+        padding-top: 10px;
     }
 
-    /* Ховаємо твоє ПК-меню і робимо його випадаючим */
+    .burger-menu {
+        display: flex;
+    }
+
+    /* Хрестик */
+    .burger-menu.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .burger-menu.open span:nth-child(2) { opacity: 0; }
+    .burger-menu.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
     nav {
-        display: none; 
-        position: fixed;
-        top: 60px; /* Відступ під висоту навігації */
+        display: none; /* Ховаємо по замовчуванню */
+        position: absolute;
+        top: 55px; /* Прямо під бургер-кнопкою */
         right: 20px;
-        width: 100%;
-        height: calc(100vh - 60px);
+        width: auto; /* Ширина по контенту */
+        min-width: 160px;
+        height: auto; /* Висота по кількості пунктів */
         background-color: white;
         flex-direction: column;
-        justify-content: flex-start;
-        padding-top: 50px;
-        gap: 30px;
+        align-items: flex-start;
+        padding: 15px;
+        gap: 15px;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        z-index: 1050;
     }
 
-    /* Клас для відкриття через JS */
+    /* Показуємо при активному класі */
     nav.active {
         display: flex;
     }
 
-    /* Налаштування посилань для зручності на тачскріні */
-    nav a {
-        height: auto;
-        font-size: 20px;
-        justify-content: center;
+    /* Вимикаємо синю лінію-підкреслення */
+    nav a::after {
+        display: none;
     }
 
-    nav a::after {
-        bottom: -5px; /* Коригуємо смужку для вертикального списку */
+    nav a {
+        height: auto;
+        font-size: 16px;
+        width: 100%;
+        padding: 5px 10px;
+    }
+
+    nav a:hover {
+        background-color: #f0f7ff; /* Легкий фон при натисканні */
+        border-radius: 6px;
     }
 }

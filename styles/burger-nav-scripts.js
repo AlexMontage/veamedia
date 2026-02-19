@@ -3,32 +3,30 @@ document.addEventListener('DOMContentLoaded', () => {
     const navMenu = document.getElementById('nav-menu');
     const navLinks = document.querySelectorAll('#nav-menu a');
 
-    // Відкриття та закриття меню по кліку на бургер
-    burgerBtn.addEventListener('click', () => {
+    // Функція перемикання
+    const toggleMenu = () => {
         navMenu.classList.toggle('active');
         burgerBtn.classList.toggle('open');
-        
-        // Забороняємо скрол сторінки при відкритому меню
-        if (navMenu.classList.contains('active')) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = '';
-        }
+    };
+
+    burgerBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleMenu();
     });
 
-    // Логіка для посилань (зміна кольору та авто-закриття)
+    // Закриваємо при кліку на посилання
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
-            // Виділяємо активне посилання
-            navLinks.forEach(l => l.classList.remove('active-link'));
-            link.classList.add('active-link');
-
-            // Закриваємо меню через 300мс (щоб встигли побачити клік)
-            setTimeout(() => {
-                navMenu.classList.remove('active');
-                burgerBtn.classList.remove('open');
-                document.body.style.overflow = '';
-            }, 300);
+            navMenu.classList.remove('active');
+            burgerBtn.classList.remove('open');
         });
+    });
+
+    // Закриваємо, якщо клікнули десь поруч
+    document.addEventListener('click', (e) => {
+        if (navMenu.classList.contains('active') && !navMenu.contains(e.target)) {
+            navMenu.classList.remove('active');
+            burgerBtn.classList.remove('open');
+        }
     });
 });
