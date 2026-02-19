@@ -1,14 +1,72 @@
-#main {
-    max-width: 1900;
-    max-height: auto;
-}
-.main {
-    margin: 130px;
-    max-width: 1000px;
-}
+/* Основний контейнер */
 .main-box {
-    margin: 0px;
+    display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
-    text-align: center;
+    gap: 40px;
+    padding: 150px 20px 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Стилі для фото/лого */
+.main-logo img {
+    max-width: 250px;
+    height: auto;
+    display: block;
+}
+
+/* Стилі для тексту */
+.main-content {
+    text-align: left;
+}
+
+.main-content h1 {
+    /* Використовуємо твій Century Gothic */
+    font-family: 'Century Gothic Bold', 'Century Gothic', sans-serif;
+    font-size: clamp(40px, 8vw, 80px);
+    font-weight: 700; /* Жирний */
+    margin: 0;
+    color: #000000;
+    line-height: 1.1;
+    text-transform: uppercase; /* Робимо великими літерами для солідності */
+}
+
+.main-content p {
+    /* Використовуємо твій Gotham */
+    font-family: 'Gotham Medium', sans-serif;
+    font-size: 24px;
+    font-weight: 500; /* Medium жирність */
+    color: #222222;
+    margin-top: 5px;
+    letter-spacing: 0.5px; /* Невеликий відступ для Gotham */
+}
+
+/* --- АДАПТИВНІСТЬ ДЛЯ ТЕЛЕФОНІВ --- */
+@media (max-width: 768px) {
+    .main-box {
+        flex-direction: column;
+        text-align: center;
+        padding-top: 100px;
+        gap: 20px;
+    }
+
+    .main-content {
+        text-align: center;
+    }
+
+    .main-logo img {
+        max-width: 150px;
+    }
+
+    .main-content h1 {
+        /* Шрифт залишається, міняємо тільки розмір */
+        font-size: 42px; 
+    }
+
+    .main-content p {
+        font-size: 18px;
+        margin-top: 10px;
+    }
 }
