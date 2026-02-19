@@ -100,7 +100,7 @@
 @media (max-width: 768px) {
     .calendar-item {
         width: 80px;
-        min-height: 100px;
+        min-height: 70px;
         padding: 15px 5px;
     }
     
@@ -111,4 +111,5 @@
     .schedule-main-title {
         font-size: 22px;
     }
+
 }
