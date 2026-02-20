@@ -30,7 +30,6 @@ document.addEventListener('DOMContentLoaded', () => {
             burgerBtn.classList.remove('open');
         }
     });
-
 });
 
 window.addEventListener('load', function() {
