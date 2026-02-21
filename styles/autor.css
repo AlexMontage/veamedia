@@ -26,12 +26,12 @@
 
 /* Заголовок всередині боксу */
 .title-inside {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 32px;
+    font-family: 'Gotham Medium', sans-serif;
     font-weight: 700;
+    font-size: 2.5rem;
+    color: #222222;
     text-align: center;
-    margin-bottom: 20px;
-    color: #333;
+    margin-bottom: 40px;
 }
 
 .autor-text {

@@ -52,6 +52,26 @@ nav a::after {
 nav a:hover { color: #0066ff; }
 nav a:hover::after { transform: translateX(-50%) scaleX(1); }
 
+/* Стиль для активного посилання */
+nav a.active {
+    color: #007bff !important; /* Синій колір, як у твоїх кнопках */
+    font-weight: 700;
+    position: relative;
+}
+
+/* Додатково: лінія під активним посиланням */
+nav a.active::after {
+    content: '';
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    width: 35px;
+    height: 3px;
+    background-color: #0066ff;
+    border-radius: 2px;
+}
+
 .burger-menu {
     display: none;
     flex-direction: column;
