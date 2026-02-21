@@ -127,7 +127,7 @@
 /* Адаптація для мобільних пристроїв */
 @media (max-width: 768px) {
     .portfolio-container {
-        padding: 100px 50px;
+        padding: 40px 20px;
         border-radius: 30px;
         margin: 0 10px;
     }
