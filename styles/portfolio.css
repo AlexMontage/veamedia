@@ -1,68 +1,55 @@
-/* ==========================================================================
-   СЕКЦІЯ ПОРТФОЛІО (КАРУСЕЛЬ ЯК У ТАРИФАХ)
-   ========================================================================== */
-
-/* Зовнішня секція */
+/* Зовнішня секція (фон сайту) */
 .portfolio-section {
-    padding: 80px 5%;
-    background-color: #f0f2f5;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    padding: 80px 20px;
+    background-color: #f0f2f5; /* Трохи темніший фон, щоб білий блок "світився" */
 }
 
-/* Заголовок винесений наверх */
-.section-title-portfolio {
-    font-family: 'Gotham Medium', sans-serif;
-    font-weight: 700;
-    font-size: 2.5rem;
-    color: #222222;
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-/* Білий "Острів" */
+/* Внутрішній блок - "Острів" */
 .portfolio-container {
-    max-width: 1100px;
-    width: 100%;
-    background-color: #ffffff;
-    padding: 50px 40px;
-    border-radius: 50px;
-    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.05);
-    box-sizing: border-box;
-    overflow: hidden; /* Щоб карусель не виходила за межі радіуса */
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #ffffff; /* Білий фон всередині блоку */
+    padding: 60px 40px;
+    border-radius: 40px; /* Ті самі гладкі краї */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04); /* Дуже м'яка тінь */
 }
 
-/* Сітка карток (Десктоп) */
+.section-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 2.2rem;
+    margin-bottom: 50px;
+    color: #1a1a1a;
+    text-align: center;
+    letter-spacing: -0.5px;
+}
+
+/* Сітка карток */
 .portfolio-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 25px;
-    align-items: stretch;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
 }
 
 /* Картка роботи */
 .portfolio-card {
     background: #fdfdfd;
-    border-radius: 25px;
+    border-radius: 25px; /* Гладкі краї для самих карток */
     overflow: hidden;
     border: 1px solid #f0f0f0;
     transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    display: flex;
-    flex-direction: column;
-    height: 100%;
 }
 
 .portfolio-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
     border-color: #007bff;
 }
 
 /* Контейнер картинки */
 .card-image {
     position: relative;
-    height: 180px;
+    height: 220px;
     overflow: hidden;
 }
 
@@ -73,11 +60,18 @@
     transition: transform 0.5s ease;
 }
 
+.portfolio-card:hover .card-image img {
+    transform: scale(1.1);
+}
+
+/* Накладання при наведенні */
 .card-overlay {
     position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.4);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(153, 153, 153, 0.4); /* Напівпрозорий темний фон */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -89,110 +83,56 @@
     opacity: 1;
 }
 
+/* Кнопка "Дивитись" */
 .play-btn {
-    padding: 10px 25px;
+    padding: 12px 30px;
     background-color: #007bff;
-    color: #fff !important;
+    color: #fff;
     text-decoration: none;
-    border-radius: 50px;
+    border-radius: 50px; /* Повністю округла кнопка */
     font-weight: 600;
-    font-size: 0.9rem;
     font-family: 'Montserrat', sans-serif;
 }
 
+.portfolio-card:hover .play-btn {
+    transform: translateY(0);
+}
+
+.play-btn:hover {
+    background-color: #0056b3;
+    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4);
+}
+
+/* Інфо блок */
 .card-info {
-    padding: 20px;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
+    padding: 25px;
 }
 
 .card-info h4 {
     font-family: 'Montserrat', sans-serif;
-    margin: 0 0 8px 0;
-    font-size: 1.1rem;
+    margin: 0 0 10px 0;
+    font-size: 1.25rem;
     color: #222;
     font-weight: 700;
 }
 
 .card-info p {
     font-family: 'Inter', sans-serif;
-    font-size: 0.85rem;
+    font-size: 0.95rem;
     color: #777;
-    line-height: 1.4;
+    line-height: 1.5;
     margin: 0;
 }
 
-/* ==========================================================================
-   АДАПТИВНІСТЬ (МОБІЛЬНА КАРУСЕЛЬ ЯК У ТАРИФАХ)
-   ========================================================================== */
-
-/* ==========================================================================
-   АДАПТИВНІСТЬ (МОБІЛЬНА КАРУСЕЛЬ ЯК У ТАРИФАХ)
-   ========================================================================== */
-
+/* Адаптація для мобільних пристроїв */
 @media (max-width: 768px) {
-    .section-title-portfolio {
-        font-size: 1.8rem !important;
-        margin-bottom: 25px;
-        letter-spacing: normal;
-    }
-
-    .portfolio-grid {
-        display: flex !important;
-        flex-wrap: nowrap !important;
-        overflow-x: auto !important;
-        scroll-snap-type: x mandatory;
-        gap: 15px;
-        padding: 10px 5px 20px 5px;
-        scrollbar-width: none;
-        -webkit-overflow-scrolling: touch;
-        align-items: stretch !important;
-    }
-
-    .portfolio-grid::-webkit-scrollbar {
-        display: none;
-    }
-
-    .portfolio-card {
-        min-width: 260px !important; /* Оптимальна ширина, щоб текст не стискався занадто сильно */
-        flex-shrink: 0 !important;
-        scroll-snap-align: center;
-        border-radius: 20px;
-        transform: scale(1) !important;
-    }
-
-    .card-image {
-        height: 150px !important; 
-    }
-
-    .card-info {
-        padding: 15px;
-    }
-
-    .card-info h4 {
-        font-size: 1rem;
-        margin-bottom: 5px;
-        line-height: 1.2;
-        /* Додаємо обрізання назви, якщо вона задовга */
-        display: -webkit-box;
-        -webkit-line-clamp: 1;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-    }
-
-    .card-info p {
-        font-size: 0.8rem;
-        line-height: 1.3;
-        /* Обмеження опису до 2-3 рядків */
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
     .portfolio-container {
-        padding: 25px 10px !important;
+        padding: 100px 50px;
+        border-radius: 30px;
+        margin: 0 10px;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
     }
 }
