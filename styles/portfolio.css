@@ -131,7 +131,7 @@
    АДАПТИВНІСТЬ (МОБІЛЬНА КАРУСЕЛЬ ЯК У ТАРИФАХ)
    ========================================================================== */
 
-@media (max-width: 992px) {
+@media (max-width: 768px) {
     .section-title-portfolio {
         font-size: 1.8rem !important;
         margin-bottom: 25px;

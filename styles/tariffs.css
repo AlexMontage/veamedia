@@ -174,57 +174,51 @@
    АДАПТИВНІСТЬ (Мобільна карусель з однаковою висотою карток)
    ========================================================================== */
 
-   @media (max-width: 762px) {
-    /* Перетворюємо сітку на горизонтальний флекс-контейнер */
-    .tariffs-grid {
-        display: flex !important;
-        align-items: stretch !important; /* Розтягує всі картки до висоти найвищої */
-        overflow-x: auto !important;     /* Вмикаємо горизонтальний скрол */
-        scroll-snap-type: x mandatory;   /* Притягування карток */
-        gap: 20px;
-        padding: 20px 10px;
-        -webkit-overflow-scrolling: touch; 
-        scrollbar-width: none; 
+ @media (max-width: 768px) {
+    /* 1. Зменшуємо загальні відступи секції зверху та знизу */
+    .tariffs-section {
+        padding: 40px 5% !important; /* Було 80px, стало 40px */
     }
 
-    .tariffs-grid::-webkit-scrollbar {
-        display: none; 
+    /* 2. Зменшуємо проміжок під заголовком */
+    .section-title {
+        font-size: 1.8rem; /* Трохи менший шрифт, щоб не було порожнечі */
+        margin-bottom: 10px !important; /* Було 50px, це прибере дірку */
     }
 
-    .tariff-card {
-        min-width: 290px !important; 
-        flex-shrink: 0 !important;   
-        scroll-snap-align: center;   
-        
-        /* Прибираємо scale(0.96), щоб висота була ідеально рівною. 
-           Ефект виділення залишимо тільки для картки .featured через бордер */
-        transform: scale(1) !important; 
-        
-        display: flex;
-        flex-direction: column;
+    /* 3. Коригуємо підзаголовок та відступ до "острова" */
+    .tariffs-subtitle {
+        margin-top: 0 !important; /* Прибираємо від'ємний маржин */
+        margin-bottom: 25px !important; /* Було 50px - скорочуємо до острова */
     }
 
-    .tariff-card.featured {
-        /* На мобільному краще виділяти кольором бордера, 
-           але якщо хочеш залишити масштаб — висота візуально зміниться */
-        transform: scale(1) !important; 
-        border: 2px solid #007bff;
-    }
-
+    /* 4. Робимо внутрішній відступ острова компактнішим */
     .tariffs-container {
-        padding: 40px 15px !important;
+        padding: 30px 10px !important; /* Було 40px 15px */
         width: 100%;
         overflow: hidden; 
         box-sizing: border-box;
     }
 
-    .section-title {
-        font-size: 2rem;
-        margin-bottom: 0 !important;
+    /* --- Твій існуючий код для каруселі залишається без змін --- */
+    .tariffs-grid {
+        display: flex !important;
+        align-items: stretch !important;
+        overflow-x: auto !important;
+        scroll-snap-type: x mandatory;
+        gap: 20px;
+        padding: 10px 5px 20px 5px; /* Оптимізували падінги сітки */
+        -webkit-overflow-scrolling: touch; 
+        scrollbar-width: none; 
     }
 
-    .tariffs-subtitle {
-        margin-top: 15px !important; /* Трохи ближче до заголовка на мобайлі */
-        margin-bottom: 30px !important;
+    .tariff-card {
+        min-width: 280px !important; /* Можна трохи звузити для кращого вигляду */
+        flex-shrink: 0 !important;   
+        scroll-snap-align: center;   
+        transform: scale(1) !important; 
+        display: flex;
+        flex-direction: column;
+        padding: 25px 20px !important; /* Зменшуємо внутрішній падінг картки */
     }
 }
